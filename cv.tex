@@ -1,0 +1,317 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2021 Jitin Nair
+%
+%	Permission is hereby granted, free of charge, to any person obtaining a copy
+%	of this software and associated documentation files (the "Software"), to deal
+%	in the Software without restriction, including without limitation the rights
+%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%	copies of the Software, and to permit persons to whom the Software is
+%	furnished to do so, subject to the following conditions:
+%	
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+%	THE SOFTWARE.
+%	
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,12pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+% \usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+
+% job listing environments
+\newenvironment{jobshort}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    }
+    {
+    }
+
+\newenvironment{joblong}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
+    }
+    {
+    \end{itemize}
+    \end{minipage}    
+    }
+% ==== Page Setup ====
+\usepackage[letterpaper, top=0.4in, bottom=0.4in, left=0.3in, right=0.3in]{geometry}
+
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+% \begin{tabularx}{\linewidth}{ @{}X X@{} }
+% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
+% \raisebox{-0.05\height}\faGithub\ username \ | \
+% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
+% \end{tabularx}
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+    {\Huge \textbf{Muhammad Qasim}} \\[6pt]
+    {\large Software Engineer \& Tech Trainer} \\[10pt]
+
+    \href{mailto:mq77gill@gmail.com}{mq77gill@gmail.com} \ $|$ \ 
+    \href{https://github.com/Qasim-Gill}{Github} \ $|$ \ 
+    \href{https://leetcode.com/u/MuhammadQasim007/}{LeetCode} \ $|$ \ 
+    \href{https://www.linkedin.com/in/muhammad-qasim-gill/}{LinkedIn} \ $|$ \ 
+    \href{https://muhammad-qasim.netlify.app/}{Portfolio} \ $|$ \ 
+    \href{https://www.coursera.org/learner/muhammad-qasim}{Coursera} \\
+\end{tabularx}
+
+
+
+%----------------------------------------------------------------------------------------
+% ACHIEVEMENTS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Achievements}
+
+\begin{itemize}[leftmargin=*]
+    \item Selected as a \href{https://digitalcredential.stanford.edu/check/FA458483850B4B635DD0915130CCBEBF00F195AFCBF6991EE7448725533BAAB2LzFqZHI1YU9SSmVRZFpMQjVXV0xjdkxuWktYOExkU2RBZE85SFF6YmlPZGZLZDA0}{\textbf{Section Leader (Mentor)}} at Stanford University’s \textit{Code in Place} program among 30,000+ applicants.
+    \item \href{https://www.linkedin.com/posts/muhammad-qasim-gill_cs50-harvard-puzzleday2025-activity-7316559580790972418-4B6G?utm_source=share&utm_medium=member_desktop&rcm=ACoAACG6gOwBnlfoWP0KSUXYMZV0hE4WXwmWsBQ}{\textbf{Harvard CS50x Puzzle Day Winner}} among 11,000+ participants | Scored 9/9.
+    \item Won \href{https://lablab.ai/event/fall-in-love-with-deepseek/shallowseekers/ai-powered-personal-finance-assistant}{\textbf{Best Use of Camel AI Award}} in \textit{Fall in Love with DeepSeek International Hackathon 2025}.
+    \item Ranked in the \href{https://leetcode.com/u/MuhammadQasim007/}{\textbf{Top 20\% on LeetCode}} with 400+ problems solved.
+    \item \href{https://www.linkedin.com/posts/muhammad-qasim-gill_celebrating-the-top-10-hackathon-winners-activity-7304649229472309248--oea?utm_source=share&utm_medium=member_desktop&rcm=ACoAACG6gOwBnlfoWP0KSUXYMZV0hE4WXwmWsBQ}{\textbf{First Place Winner}} at ULEFUSA – APTECH Generative AI Hackathon.
+    \item Recipient of a \textbf{Solar Panel System Award} by the Chief Minister of Pakistan for being school topper.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+% SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Skills}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Frontend Development:} React, Tailwind, Bootstrap, Material UI
+    \item \textbf{Backend Development:} PHP, Python, Flask, Node.js, Express
+    \item \textbf{Databases:} MySQL, MongoDB, SQLite, PostgreSQL
+    \item \textbf{Tools:} VSCode, Google Colab, Sublime Text, Jupyter Notebook, GitHub, Postman
+    \item \textbf{Google Maps:} Leaflet, Google Maps
+    \item \textbf{APIs \& Integrations:} Twilio, SERP API, Cloudinary, Nodemailer, Google Maps API, Stripe, GoHighLevel
+    \item \textbf{AI:} Generative AI, LLMs, RAG
+    \item \textbf{Web Scraping \& Automation:} Selenium, BeautifulSoup
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+% EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\textbf{\href{https://leads.edu.pk/}{Lahore Leads University}} \hfill Lahore, Pakistan \\
+Bachelor of Science in Computer Science \hfill \textit{Graduation: 2021} \\
+CGPA: 3.14/4.0
+
+\begin{itemize}[leftmargin=*]
+    \item Final Year Project: \textbf{Mr Solution} | PHP, MySQL, HTML, CSS, Bootstrap, JavaScript
+    \item Built a platform to connect people with local service professionals (carpenters, electricians, etc.)
+    \item Designed a lead generation system where buyers request services and professionals purchase leads
+\end{itemize}
+
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+
+%Experience
+\section{Work Experience}
+
+\textbf{Fullstack Web Developer} \hfill Lahore, Pakistan \\
+\href{https://metaviz.pro/}{MetaViz Pro} \hfill May 2022 -- Jan 2025
+
+\begin{itemize}[leftmargin=*]
+    \item Developed web applications using HTML, CSS, Bootstrap, JavaScript, jQuery, SQL, and PHP.
+    \item Created web crawlers for data extraction, transforming scraped data into actionable business insights.
+    \item Optimized application performance, reducing page load times through efficient code and database queries.
+    \item Integrated APIs and third-party services to enhance functionality, enabling seamless service integration.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%	INTERNATIONAL HACKATHONS AND COMPETITIONS
+%----------------------------------------------------------------------------------------
+\section{International Hackathons \& Competitions}
+
+\textbf{\href{https://www.linkedin.com/posts/muhammad-qasim-gill_cs50-harvard-puzzleday2025-activity-7316559580790972418-4B6G?utm_source=share&utm_medium=member_desktop&rcm=ACoAACG6gOwBnlfoWP0KSUXYMZV0hE4WXwmWsBQ}{Harvard Puzzle Day}} \\
+9/9 puzzles solved in 3 days, demonstrating critical thinking, teamwork, and time management.
+
+\vspace{0.5em}
+
+\textbf{\href{https://www.linkedin.com/feed/update/urn:li:activity:7304649229472309248/}{Legal Assistant Chatbot}} 
+$|$ Gradio, FAISS, Llama3, Helsinki NLP, PyPDF2, MiniLM-L12-v2, LangChain \\
+\textit{Event:} Focused on anything through AI-driven solutions \\
+\textit{Role:} Designed and developed a chatbot frontend for Pakistani law queries, integrating Llama3 for simplified English responses, Helsinki NLP for Urdu translation, FAISS vector database, and Gradio interface. \\
+\textit{Outcome:} Secured \textbf{First Rank} by building an AI-powered chatbot to simplify Pakistan’s laws in English and Urdu.
+
+\vspace{0.5em}
+
+\textbf{\href{https://lablab.ai/event/fall-in-love-with-deepseek/shallowseekers/ai-powered-personal-finance-assistant}{Finance Assistance}} 
+$|$ Streamlit, PyMuPDF, CAMEL-AI, AIML API (DeepSeek) \\
+\textit{Event:} Focused on anything using camel-ai, deepseek v3 or ai/ml api \\
+\textit{Role:} Collected and cleaned Kaggle dataset for fine-tuning, assisted in debugging, testing, and deployment. \\
+\textit{Outcome:} Won the \textbf{Best Use of AI/ML API Award} for building an AI-powered Personal Finance Assistant that analyzed credit card statements and provided spending recommendations based on the 50/30/20 rule.
+
+\vspace{0.5em}
+
+
+\textbf{\href{https://www.linkedin.com/posts/muhammad-qasim-gill_mit2winter2025-teamicodegurupro-problemsolving-activity-7287252831252680704-BMRf?utm_source=share&utm_medium=member_desktop&rcm=ACoAACG6gOwBnlfoWP0KSUXYMZV0hE4WXwmWsBQ}{Massachusetts Institute of Technology Informatics Tournament}} \\
+Ranked 239\textsuperscript{th}/536 teams by solving problems with Data Structures and Algorithms
+
+
+\vspace{0.5em}
+
+\textbf{\href{https://drive.google.com/file/d/1m7mCVE9o4MydZOjpE6-6a_idNBluioeA/view?usp=drive_link}{Calico Fall (UC Berkeley Coding Competition)}} \\
+Solved 4/17 problems in 2 hours, showing analytical skills, teamwork, and time management.
+
+\vspace{0.5em}
+
+\textbf{\href{https://drive.google.com/file/d/1HeAbr-IcT9DLcyxMDckvL4oIVeadHqbU/view}{Meta Hacker Cup (Coding Competition)}} \\
+Qualified for Round 1, leveraging data structures and algorithmic thinking.
+
+
+
+%----------------------------------------------------------------------------------------
+%	Volunteer Teaching and Mentorship
+%----------------------------------------------------------------------------------------
+\section{Volunteer Teaching and Mentorship}
+
+\textbf{Section Leader Mentor} \hfill California, US · Remote \\
+\href{https://codeinplace.stanford.edu/}{Stanford University: Code in Place} \hfill Apr 2025 -- Jun 2025
+\begin{itemize}[leftmargin=*]
+    \item Mentored 50+ students from diverse global backgrounds in Python and debugging.
+    \item Conducted 1:1 sessions clarifying concepts such as for-loops, while-loops, and functions.
+    \item Assisted students in troubleshooting code and improving their logical approach to programming challenges.
+    \item See students’ feedback \href{https://media.licdn.com/dms/image/v2/D4D2DAQH_89FutFda4w/profile-treasury-image-shrink_8192_8192/B4DZfE6yljGUAg-/0/1751355439025?e=1756393200&v=beta&t=n1DErPPd6YfASzT0V4SyNly1bj7Gohi6x4FmvWfIecI}{here}.
+\end{itemize}
+
+\vspace{0.5em}
+
+\textbf{Tech Trainer and Moderator} \hfill Santa Clara, California · Remote \\
+\href{https://icode.guru/}{ICodeGuru} \hfill Feb 2025 -- Present
+\begin{itemize}[leftmargin=*]
+    \item Taught Data Structures and Algorithms (DSA) and LeetCode to 20,000+ learners via live sessions and workshops \href{https://github.com/Qasim-Gill/Volunteer-Teaching-and-Mentorship}{(link)}.
+    \item Solved LeetCode coding exercises live to demonstrate algorithmic patterns.
+    \item Explained time and space complexity trade-offs and alternative approaches.
+    \item Provided personalized feedback on optimizations to improve problem-solving efficiency.
+\end{itemize}
+
+
+%----------------------------------------------------------------------------------------
+%	References
+%----------------------------------------------------------------------------------------
+\section{References}
+
+\textbf{Dr. Zafar Shahid} \\
+Technical Lead / Staff Engineer @Meta | \href{https://www.linkedin.com/in/zafarshahid/}{LinkedIn} \\
+Email: \href{mailto:zafar.shahid@acm.org}{zafar.shahid@acm.org} \\
+Phone: +1 512 239 8008 \\
+Location: Santa Clara, California, United States
+
+\vspace{1em}
+
+\textbf{Dr. Rizwan Ghaffar} \\
+Principal Engineer @Broadcom Inc. | \href{https://www.linkedin.com/in/rizwan-ghaffar/}{LinkedIn} \\
+Email: \href{mailto:rizwanghaffar24@gmail.com}{rizwanghaffar24@gmail.com} \\
+Phone: +1 858 216 5405 \\
+Location: San Jose, California, United States
+
+
+\vfill
+
+
+\end{document}
